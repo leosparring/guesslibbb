@@ -8,24 +8,24 @@ import scipy.stats as stats
 ###--------- GLOBAL VARIABLES ---------###
 
 # Specify from what line of the user's transcripts
-# that sequences should be aligned from.
+# that sequences should be aligned from. Index from zero.
 START_FROM_SEQUENCE_NR = 0
 
-# Specify from how many alignments that data
-# should be collected from at the least.
-NR_OF_READS = 10
+# Specify from how many paired alignments data
+# should be collected from.
+NR_OF_PAIRS = 100
 
 # Specify the maximum nr of alignments to perform before giving up on determining
-# the library type
-MAX_BLATS = 1000
+# the library type.
+MAX_BLATS = 10000000000
 
 # Specify the significance threshold for the p-values.
-SIGNIFICANT_P = 0.05
+SIGNIFICANT_P = 1
 
 # Specify the significance threshold for p_value corresponding to
 # the null hypotheses that we want to be true. collected data looks
 # like corresponding trained data.
-NULL_P = 0.01
+NULL_P = 0.000000001
 
 # Dictionary of the different library types.
 LIB_TYPE_DICT = {

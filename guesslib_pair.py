@@ -17,15 +17,10 @@ NR_OF_PAIRS = 100
 
 # Specify the maximum nr of alignments to perform before giving up on determining
 # the library type.
-MAX_BLATS = 10000000000
+MAX_BLATS = 100000000000000000000000
 
 # Specify the significance threshold for the p-values.
-SIGNIFICANT_P = 1
-
-# Specify the significance threshold for p_value corresponding to
-# the null hypotheses that we want to be true. collected data looks
-# like corresponding trained data.
-NULL_P = 0.00000001
+SIGNIFICANT_P = 0.05
 
 # Dictionary of the different library types.
 LIB_TYPE_DICT = {

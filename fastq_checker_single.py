@@ -13,7 +13,7 @@ QUALITY_THRESHOLD_START = 40
 
 # If this is set to True, the output file will replace the input file, the initial
 # data will thus be lost. (be careful)
-REPLACE_INPUT = False
+REPLACE_INPUT = True
 
 ###--------- FUNCTIONS ---------###
 

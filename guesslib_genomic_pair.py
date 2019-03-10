@@ -17,15 +17,10 @@ NR_OF_PAIRS = 100
 
 # Specify the maximum nr of alignments to perform before giving up on determining
 # the library type.
-MAX_BLATS = 10000000000
+MAX_BLATS = 10000000000000000000000
 
 # Specify the significance threshold for the p-values.
-SIGNIFICANT_P = 1
-
-# Specify the significance threshold for p_value corresponding to
-# the null hypotheses that we want to be true. collected data looks
-# like corresponding trained data.
-NULL_P = 0.000000000001
+SIGNIFICANT_P = 0.05
 
 # Dictionary of the different library types.
 LIB_TYPE_DICT = {
@@ -173,10 +168,9 @@ def get_libtype_and_pvalue(o_and_f, o_and_r, i_and_f, i_and_r, collected_pairs):
 	p_value = min(p_values)
 	# Retrieving orientation corresponding to highest p_val, from dictionary
 	lib_type = LIB_TYPE_DICT.get(p_values.index(max(p_values))) 
-
 	print(f'The list of p-values ["I", "O"] = {p_values}\n'
-	f'The library type appears to be: {lib_type}.\n'
-	f'The second to highest p-value is: {p_value}')
+		f'The library type appears to be: {lib_type}.\n'
+		f'The second to highest p-value is: {p_value}')
 
 	return lib_type, p_value
 

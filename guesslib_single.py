@@ -8,24 +8,19 @@ import scipy.stats as stats
 ###--------- GLOBAL VARIABLES ---------###
 
 # Specify from what line of the user's transcripts
-# that sequences should be aligned from. Index from zero.
+# that sequences should be aligned from.
 START_FROM_SEQUENCE_NR = 0
 
-# Specify from how many paired alignments data
-# should be collected from.
-NR_OF_PAIRS = 100
+# Specify from how many alignments that data
+# should be collected from at the least.
+NR_OF_READS = 100
 
 # Specify the maximum nr of alignments to perform before giving up on determining
-# the library type.
-MAX_BLATS = 10000000000
+# the library type
+MAX_BLATS = 1000000000000000000000
 
 # Specify the significance threshold for the p-values.
-SIGNIFICANT_P = 1
-
-# Specify the significance threshold for p_value corresponding to
-# the null hypotheses that we want to be true. collected data looks
-# like corresponding trained data.
-NULL_P = 0.000000001
+SIGNIFICANT_P = 0.05
 
 # Dictionary of the different library types.
 LIB_TYPE_DICT = {
@@ -132,11 +127,9 @@ def get_libtype_and_pvalue(forward, reverse, collected_reads):
 	p_values.append(stats.fisher_exact([STRANDED_DATA, [reverse, collected_reads-reverse]])[1])
 	p_values.append(stats.fisher_exact([UNSTRANDED_DATA, [forward, collected_reads-forward]])[1])
 
-	if (max(p_values) > NULL_P):
-		p_value = sorted(p_values, reverse=True)[1] # This is the second to highest p_value.
+	p_value = sorted(p_values, reverse=True)[1] # This is the second to highest p_value.
+	lib_type = LIB_TYPE_DICT.get(p_values.index(max(p_values)))
 
-		lib_type = LIB_TYPE_DICT.get(p_values.index(max(p_values)))
-	
 	print(f'The list of p-values ["SF", "SR", "U"] = {p_values}\n'
 		f'The library type appears to be: {lib_type}.\n'
 		f'The second to highest p-value is: {p_value}\n') 

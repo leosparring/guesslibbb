@@ -17,7 +17,7 @@ NR_OF_READS = 100
 
 # Specify the maximum nr of alignments to perform before giving up on determining
 # the library type
-MAX_BLATS = 1000000000000000000000
+MAX_BLATS = 1000
 
 # Specify the significance threshold for the p-values.
 SIGNIFICANT_P = 0.05
@@ -100,8 +100,9 @@ def guesslib_single(ref, user_transcripts):
 	else:
 		succesful_lib_determination = True
 
-		print(f'\nThe library type determination was succesful\n'
-			f'Forwards: {forward}, reverses: {reverse}, '
+		print(f'\nThe library type determination was succesful.\n'
+			f'Forwards: {forward}, reverses: {reverse}.\n'
+			f'Total nr of collected reads: {collected_reads}.\n'
 			f'The most likely lib type is {lib_type}.')
 
 	end_time = time.time()

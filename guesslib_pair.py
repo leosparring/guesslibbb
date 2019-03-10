@@ -17,7 +17,7 @@ NR_OF_PAIRS = 100
 
 # Specify the maximum nr of alignments to perform before giving up on determining
 # the library type.
-MAX_BLATS = 100000000000000000000000
+MAX_BLATS = 1000
 
 # Specify the significance threshold for the p-values.
 SIGNIFICANT_P = 0.05
@@ -124,6 +124,8 @@ def guesslib_pair(ref, user_transcripts_f1, user_transcripts_f2):
 		print(f'Guesslib could not determine the library type.\n'
 			f'Tried to align {MAX_BLATS} sequences. With this, '
 			f'{collected_pairs} pairs were collected.\n'
+			f'Of these, there were {o_and_f} OFs, {o_and_r} ORs, '
+			f'{i_and_f} IFs, {i_and_r} IRs.\n'
 			f'Possibly, the wrong reference sequence was used.')
 	else:
 		succesful_lib_determination = True
